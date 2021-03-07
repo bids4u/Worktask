@@ -1,0 +1,64 @@
+<form #additionalCost="ngForm" class="additional" (ngSubmit)="submit()">
+  <div >
+    <label for="">Cost Type</label>
+    <input type="radio" name="Cost" value="Group cost" #cost="ngModel" [(ngModel)]="additionalModel.costType">
+    <label for="">Group cost</label>
+    <input type="radio" name="Cost" value="Individual Item cost" #cost="ngModel" [(ngModel)]="additionalModel.costType">
+    <label for="">Individual Item cost</label>
+  </div>
+  <div>
+    <label for="">Additional Cost A/C :</label>
+    <input type="text" class="splInput" placeholder="Press Enter to select" name="additionalCost" #additionalCost="ngModel" [(ngModel)]="additionalModel.additionalCost" (keydown.enter)="openDialog('cost')" required>
+    <label for="">Amounts :</label>
+    <input type="text" name="amounts" #amounts="ngModel" [(ngModel)]="additionalModel.amounts" required>
+    <label for="">Item :</label>
+    <input type="text" name="item" #item="ngModel" [(ngModel)]="additionalModel.item" required>
+  </div>
+  <div>
+    <label for="">Credited A/C :</label>
+    <input type="text" class="splInput"  placeholder="Press Enter to select" (keydown.enter)="openDialog('credit')" name="credited" #credited="ngModel" [(ngModel)]="additionalModel.credited" required>
+    <label for="">Remarks :</label>
+    <input type="text" class="splInput" name="remarks" #remarks="ngModel" [(ngModel)]="additionalModel.remarks" required>
+    <label for="">Group Cost Mode :</label>
+    <select name="cars" class="searchQuery" name="groupCostMode" #groupCostMode="ngModel" [(ngModel)]="additionalModel.groupCostMode" required>
+      <option selected value="ON AMOUNT">ON AMOUNT</option>
+      <option value="ON QTY">ON QTY</option>
+    </select>
+    <button [disabled]="additionalCost.invalid">Add</button>
+  </div>
+</form>
+
+<table>
+  <tr class="tabHead">
+    <th *ngFor="let t of th">
+      {{t}}
+    </th>
+  </tr>
+  <tr *ngFor="let cst of costd;let i = index">
+    <td>{{i+1}}</td>
+    <td>
+      <app-add-td  [value]="{id:cst.id,data:cst.additionalCost,type:'additionalCost'}"></app-add-td>
+    </td>
+    <td>
+      <app-add-td [value]="{id:cst.id,data:cst.amounts,type:'amounts'}"></app-add-td>
+    </td>
+    <td>
+      <app-add-td [value]="{id:cst.id,data:cst.credited,type:'credited'}"></app-add-td>
+    </td>
+    <td>
+      <app-add-td [value]="{id:cst.id,data:cst.remarks,type:'remarks'}" ></app-add-td>
+    </td>
+    <td>
+      <app-add-td [value]="{id:cst.id,data:cst.costType,type:'costType'}"  ></app-add-td>
+    </td>
+    <td>
+      <app-add-td [value]="{id:cst.id,data:cst.groupCostMode,type:'groupCostMode'}"  ></app-add-td>
+    </td>
+    <td>
+      <app-add-td [value]="{id:cst.id,data:cst.item,type:'item'}"  ></app-add-td>
+    </td>
+  </tr>
+</table>
+<div >
+
+</div>

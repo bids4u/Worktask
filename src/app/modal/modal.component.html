@@ -1,0 +1,28 @@
+<mat-toolbar class="tool">
+  <span>Accounts</span>
+  <button mat-stroked-button (click)="close()"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+
+<mat-dialog-content    (keydown.arrowdown)="keyDown()" (keydown.arrowup)="keyUP()" (keydown.enter)="keyEnter()">
+  <select name="cars" class="searchQuery" [(ngModel)]="serachOpt" [autofocus]="false">
+    <option  value="code">AC code</option>
+    <option value="name">A/C Name</option>
+    <option value="select">Select filter Options</option>
+  </select>
+  <input type="text" #search [autofocus]="true" placeholder="Enter keyword to search" (keypress)="searchfilter()" (keydown.backspace)="searchfilter()" class="searchQuery" [(ngModel)]="searchQuerry">
+{{search.focus()}}
+  <table #myTable>
+    <tr>
+      <th>AC Code</th>
+      <th>A/C Name</th>
+    </tr>
+    <tr *ngFor="let dat of data;" (dblclick)="save(dat.name)" >
+      <td>{{dat.code}}</td>
+      <td>{{dat.name}}</td>
+    </tr>
+  </table>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="close()">Close</button>
+</mat-dialog-actions>

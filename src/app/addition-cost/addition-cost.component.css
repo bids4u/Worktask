@@ -1,0 +1,33 @@
+label{
+  width: 100px;
+  margin-left: 10px;
+}
+table{
+  width: 100%;
+  font-size: small;
+}
+td{
+  border: 1px solid black;
+}
+.tabHead{
+  background-color: darkgrey;
+  padding: 3px;
+  }
+.additional{
+padding: 10px;
+margin: 4px;
+border: 1px solid black;
+font-size: small;
+}
+button{
+  background-color: #39b8dd;
+  padding: 0px 4px;
+  margin-left: 10px;
+  border: none;
+}
+.splInput{
+  width: 200px;
+}
+.tableInput{
+  width: 100%;
+}

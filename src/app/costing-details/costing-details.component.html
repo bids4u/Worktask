@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th *ngFor="let thead of th">{{thead}}</th>
+  </tr>
+  <tr *ngFor="let dt of data;let i=index">
+    <td>{{i+1}}</td>
+    <td>{{dt.costType}}</td>
+    <td>{{dt.credited}}</td>
+    <td>{{dt.remarks}}</td>
+    <td>{{dt.amounts}}</td>
+  </tr>
+</table>

@@ -1,0 +1,87 @@
+<app-modal *ngIf="modalDisp"></app-modal>
+<form class="topForm" #voucherForm = "ngForm" novalidate>
+  <div class="voucher">
+    <label for="voucher">
+      Voucher No:
+    </label>
+    <input type="text" name="voucher" value="" #name="ngModel" [(ngModel)]="voucherModel.voucher">
+  </div>
+  <div class="voucher">
+    <label for="date">
+      Entry Date:
+    </label>
+    <input type="date" name="entry" (change)="changeEntry(voucherModel.entry )"  #entry [value]="voucherModel.entry | date:'yyyy-MM-dd'"  (input)="voucherModel.entry=parseDate($event.target.value)" >A.D
+    <input type="text" disabled name="entryBS" #entryBS [(ngModel)]="voucherModel.entryBS">B.S
+  </div>
+  <div class="voucher">
+    <label for="date">
+      Trn Date:
+    </label>
+    <input type="date" name="trn" #trn (change)="changeTrn(voucherModel.trn)" [value]="voucherModel.trn | date:'yyyy-MM-dd'"  (input)="voucherModel.trn=parseDate($event.target.value)" >A.D
+    <input type="text" disabled name="trnBS" #trnBS [(ngModel)]="voucherModel.trnBS">B.S
+  </div>
+</form>
+
+<form *ngIf="display" class="middleForm" #middleForm = "ngForm">
+  <div class="individual">
+    <div>
+      <label for="">Cost Center:</label>
+      <input type="text" name="costCenter" #costCenter="ngModel" [ngModel]="middleModel.costCenter">
+    </div>
+    <div>
+      <label for="">Voucher Type:</label>
+      <input type="text" name="costCenter" #costCenter="ngModel" [ngModel]="middleModel.costCenter">
+    </div>
+  </div>
+  <div class="individual">
+    <div>
+      <label for="">Refno:</label>
+      <input type="text" name="refNo" #refNo="ngModel" [ngModel]="middleModel.refNo">
+    </div>
+    <div>
+      <label for="">Cash/Bank:</label>
+      <input type="text" name="cash" #cash="ngModel" [ngModel]="middleModel.cash">
+    </div>
+  </div>
+  <div class="individual">
+    <div>
+      <label for="">Remarks:</label>
+      <input type="text" name="remarks" #remarks="ngModel" [ngModel]="middleModel.remarks">
+    </div>
+    <div>
+      <label for="">Pay To:</label>
+      <input type="text" name="payTo" #payTo="ngModel" [ngModel]="middleModel.payTo">
+    </div>
+  </div>
+</form>
+
+<div class="bottomForm">
+  <table>
+    <tr class="tabHead">
+      <th>Sn</th>
+      <th>Particular</th>
+      <th>Unit</th>
+      <th>QTY</th>
+      <th>Rate</th>
+      <th>Amount</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><input type="text" #particular placeholder="press Enter to select" (click)="setDisp()" (keydown.enter)="onenterclick()" [(ngModel)]="bottomModel.particular"></td>
+      <td><input type="text" [(ngModel)]="bottomModel.unit"></td>
+      <td><input type="number" [(ngModel)]="bottomModel.qty"></td>
+      <td><input type="number" [(ngModel)]="bottomModel.rate"></td>
+      <td><input type="number" [(ngModel)]="bottomModel.amount" (keydown.tab)="submit()"></td>
+    </tr>
+    <tr *ngFor="let item of bottom;let i = index">
+      <td>{{i+2}}</td>
+      <td>{{item.particular}}</td>
+      <td>{{item.unit}}</td>
+      <td>{{item.qty}}</td>
+      <td>{{item.rate}}</td>
+      <td>{{item.amount}}</td>
+    </tr>
+  </table>
+</div>
+<button (click)="submit()">wefefw</button>

@@ -1,0 +1,14 @@
+.eachfrom{
+  margin: 10px;
+}
+.eachfrom>input{
+  width: 250px;
+}
+.eachfrom>label{
+  width: 200px
+}
+.docForm{
+  background-color: white;
+  padding: 20px;
+  font-size: small;
+}
